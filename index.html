@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .container {
+        text-align: center;
+        align-items: center;
+      }
+      .heading-1 {
+        margin-top: 150;
+      }
+      input {
+        width: 500px;
+        height: 50px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      button {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #4caf50;
+        color: white;
+        font-size: 20px;
+      }
+      #qrcode {
+        display: flex;
+        justify-content: center;
+        margin: 30px auto;
+      }
+    </style>
+    <title>PDF QR Code Generator</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heaidng-1">QR Code Generator</h1>
+      <h2 class="heading-2">Enter the text/Url here:</h2>
+      <input type="text" id="url" />
+      <button onclick="generateQRCode()">Generate QR Code</button>
+
+      <div id="qrcode"></div>
+    </div>
+
+    <script>
+      function generateQRCode() {
+        var Url = document.getElementById("url").value;
+        var qrCode = new QRCode(document.getElementById("qrcode"), {
+          text: Url,
+          width: 256,
+          height: 256,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+      }
+    </script>
+  </body>
+</html>
